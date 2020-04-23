@@ -2,7 +2,7 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  ManyToMany,
+  ManyToOne,
   JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
@@ -24,12 +24,12 @@ class Transaction {
   @Column('decimal')
   value: number;
 
-  @Column()
-  category_id: string;
-
-  @ManyToMany(() => Category)
+  @ManyToOne(() => Category)
   @JoinColumn({ name: 'category_id' })
   category: Category;
+
+  @Column()
+  category_id: string;
 
   @CreateDateColumn()
   created_at: Date;
